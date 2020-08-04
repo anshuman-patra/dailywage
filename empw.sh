@@ -10,7 +10,8 @@ MAX_WORKING_HRS=100
 totalSalary=0
 totalEmpHr=0
 totalWorkingDays=0
-
+function  employeewage()
+{
 while [[ $totalEmpHr -le $MAX_WORKING_HRS || $totalWorkingDays -le $NUMBER_OF_WORKING_DAYS ]]
 do
 ((totalWorkingDays++))
@@ -49,3 +50,6 @@ totalSalary=$(( $totalEmpHr * $EMP_WAGE_PER_HR ))
 done
 
 echo "Total Wage of Emp:" $totalSalary
+}
+( employeewage )
+ 
