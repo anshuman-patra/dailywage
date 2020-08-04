@@ -10,6 +10,9 @@ MAX_WORKING_HRS=100
 totalSalary=0
 totalEmpHr=0
 totalWorkingDays=0
+
+
+declare -A daily_emp_wage
 function  employeewage()
 {
 while [[ $totalEmpHr -le $MAX_WORKING_HRS || $totalWorkingDays -le $NUMBER_OF_WORKING_DAYS ]]
@@ -45,11 +48,20 @@ case $empCheck in
               
                                    
         esac
+function getDailyWage()
+{
+        local empHrs=$1
+        wage=$((empHrs*EMP_WAGE_PER_HR))
+        echo $wage
+}
 totalEmpHr=$(( $totalEmpHr + $emphr ))
 totalSalary=$(( $totalEmpHr * $EMP_WAGE_PER_HR ))
-done
+ daily_emp_wage["Day"$totalWorkingDays]="$( getDailyWage $emphr )"
 
+done
+echo "Values of daily_emp_wage : "${daily_emp_wage[@]}
 echo "Total Wage of Emp:" $totalSalary
+
 }
 ( employeewage )
  
