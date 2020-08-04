@@ -61,6 +61,7 @@ totalSalary=$(( $totalEmpHr * $EMP_WAGE_PER_HR ))
 done
 echo "Values of daily_emp_wage : "${daily_emp_wage[@]}
 echo "Total Wage of Emp:" $totalSalary
+echo "Keys of daily_emp_wage : "${!daily_emp_wage[@]}
 
 }
 ( employeewage )
